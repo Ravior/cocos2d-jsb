@@ -25,6 +25,11 @@ Cocos2d-html5
 	14、var animate = cc.Animate.create(animation);//动画动作
 	15、var layer1=cc.LayerColor.create(cc.c4(255,255,0,255),320,480); //创建一个纯颜色层
 	16、cc.Director.getInstance().getTouchDispatcher().addTargetedDelegate(this, 0, true); //添加单指触摸事件监听
+	17、var a_delay=cc.DelayTime.create(6); //延迟动作，延迟6秒
+	18、var a_rotateBy=cc.RotateBy.create(3,360);//3秒内旋转360度
+	19、var a_rep = cc.Repeat.create(a_rotate, 1000); //执行a_rotate动作1000次
+	20、var a_rep2=a.rep.copy(); //to copy object with deep copy
+	21、var a_seq=cc.Sequence.create(a_delay,a_rotateBy,a_delay.copy(),a_rep); //连续执行几个动作
 
 
 

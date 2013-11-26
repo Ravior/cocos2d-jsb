@@ -1,0 +1,4 @@
+delete from SYS_CONF_SERVER;
+insert into SYS_CONF_SERVER
+(id,name,url)values
+(1,'双线一服','http://sj108test.96pk.com:9191/');

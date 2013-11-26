@@ -1,0 +1,1 @@
+java -jar configgenerator.jar -j config.json -s sql.txt config.xls

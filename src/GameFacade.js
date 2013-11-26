@@ -1,9 +1,5 @@
 /**
  * @author Ravior
- * @author Copyright(c) 2012-2013 Cn5r, Inc., Some rights reserved.
- * @class  app.GameFacade
- * @extends puremvc.Facade
- * @time 2012-3-8 9:53
  */
 puremvc.define(
     // CLASS INFO
