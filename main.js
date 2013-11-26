@@ -1,18 +1,13 @@
 /**
  * User: Ravior
- * Date: 13-11-25
- * Time: 下午3:53
  * Dec:主文件
  */
 
-require("jsb.js");
-
-var appFiles=[
-];
-
-cc.dumpConfig();
-
 (function(){
+    require("jsb.js");
+    var appFiles=[
+    ];
+    cc.dumpConfig();
     var len=appFiles.length;
     for(var i=0;i<len;i++){
         require(appFiles[i]);
