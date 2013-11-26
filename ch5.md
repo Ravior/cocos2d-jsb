@@ -6,6 +6,7 @@ Cocos2d-html5
 	3、cc.RANDOM_0_1()； //产生一个随机数
 	4、cc.PointMake(0,0);  //等同于cc.p(0,0);
 	5、cc.c4(117,76,34,255); //前三个参数为RGB，后一个为透明度
+	6、cc.log("打印的语句")； //日志
 
 ### 2、常见语句
 	1、cc.Director.getInstance(); //获取Director单例对象
