@@ -11,7 +11,7 @@ Cocos2d-html5
 ### 2、常见语句
 	1、cc.Director.getInstance(); //获取Director单例对象
 	2、var scene=cc.Scene.create();  //获取一个scene对象
-	3、var menuItemImage=cc.MenuItemImage.create(s_normal,s_selected,this,callBackFunc); //创建MenuItemImage
+	3、var menuItemImage=cc.MenuItemImage.create(s_normal,s_selected,callback，target); //创建MenuItemImage
 	4、var menu=cc.Menu.create(menuItemImage); //创建Menu
 	5、this._super();  //调用父类的同名函数
 	6、ctor:function(){};  //构造函数
@@ -39,6 +39,7 @@ Cocos2d-html5
 	28、editBox.setDelegate(this);  //设置委托代理对象为当前类
 	29、editBox.setInputFlag(cc.EDITBOX_INPUT_FLAG_PASSWORD);//设置输入的文本类型
 	30、editBox.setText("文本");  //设置输入框文本
+	31、在cocos2d-x for js的实现中ctor里面会调用一个函数cc.associateWithNative(this, 父类)，这个函数负责后台生成一个c++对象，然后把c++对象和js对象绑定到一起
 
 
 
