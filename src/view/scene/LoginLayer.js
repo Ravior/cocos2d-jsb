@@ -7,8 +7,10 @@ var LoginLayer = cc.Layer.extend({
     // private
     nameBox:null,
     passwdBox:null,
+    eventManager:null;
     ctor:function() {
         this._super();
+        this.eventManager=new EventDispatcher();
         cc.associateWithNative( this, cc.Layer );
     },
 
@@ -23,15 +25,6 @@ var LoginLayer = cc.Layer.extend({
         var bg = cc.Sprite.create(s_StartBackground);
         bg.setPosition(cc.p(size.width / 2, size.height / 2));
         this.addChild(bg);
-
-        // get server list
-        // remote connection...
-        // update check
-        // this.updateServer
-        game.server = {name:'双线一服', host:'http://sj108test.96pk.com:9191/'};   // default server
-        game.servers = [
-            {name:'双线一服',host:'http://sj108test.96pk.com:9191/'}
-        ];
 
         var accountString = app.GameData.storage.getItem('account') || '{}';
         var account = JSON.parse(accountString);
@@ -80,9 +73,8 @@ var LoginLayer = cc.Layer.extend({
         var username = this.nameBox.getText();
         var password = this.passwdBox.getText();
         var data={"username":username,"password":password};
-        this.dispatchEvent({type:LoginLayer.Login,target:this,data:data});
+        this.eventManager.dispatchEvent({type:LoginLayer.Login,target:this,data:data});
     }
 });
-ClassUtils['extends'](LoginLayer, EventDispatcher);
 //Static members
 LoginLayer.Login="Login";

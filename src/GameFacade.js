@@ -19,10 +19,10 @@ puremvc.define(
             if (!this.initialized) {
                 this.initialized = true;
                 cc.log("GameFacade StartUp");
-
+                //DataService单例类facade属性值
+                app.proxy.DataService.getInstance().facade = this;
                 //注册，将Command类与Notification相关联
                 this.registerCommand(app.command.CommandType.START_UP, app.command.StartUpCommand);
-
                 //发送Notification，初始化
                 this.sendNotification(app.command.CommandType.START_UP);
             }

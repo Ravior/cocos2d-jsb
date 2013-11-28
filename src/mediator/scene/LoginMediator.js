@@ -5,32 +5,39 @@
 puremvc.define(
     //CLASS INFO
     {
-        name:'app.mediator.scene.LogoMediator',
+        name:'app.mediator.scene.LoginMediator',
         parent:puremvc.Mediator
     },
     //INSTANCE MEMBERS
     {
         /**@Override**/
         listNotificationInterests:function(){
-            var _self=app.mediator.scene.LogoMediator;
-            return [_self.SHOW,
-                _self.CLOSE
+            return [
+                app.mediator.scene.LoginMediator.SHOW,
+                app.Proxy.LoginProxy.LoginComplete
             ];
         },
 
         /**@Override**/
         handleNotification:function(note){
-            var _self=app.mediator.scene.LogoMediator;
             switch(note.getName()){
-                case _self.SHOW:
+                case app.mediator.scene.LoginMediator.SHOW:
                     //主场景view
                     this._init();
                     break;
-                //建筑信息发生改变
-                case _self.CLOSE:
-                    this.viewComponent.depose();
-                    this.setViewComponent(null);
-                    break;
+                //请求完成
+                case app.Proxy.LoginProxy.LoginComplete:
+                    if(this.viewComponent){
+                        var code=note.getBody();
+                        //登陆成功
+                        if(code==1){
+                            cc.log("登陆成功！");
+                        }
+                        //登陆失败
+                        else{
+                            cc.log("登陆失败！");
+                        }
+                    }
             }
         },
 
@@ -45,7 +52,7 @@ puremvc.define(
                     scene.addChild(layer);
                 }
                 this.setViewComponent(layer);
-                this.viewComponent.addEventListener(LoginLayer.Login,this);
+                this.viewComponent.eventManager.addEventListener(LoginLayer.Login,this);
                 cc.Director.getInstance().runWithScene(scene);
             }
         },
@@ -54,6 +61,8 @@ puremvc.define(
             switch (event.type) {
                 case LoginLayer.Login:
                     cc.log("登陆");
+                    //发送请求
+                    this.facade.retrieveProxy(app.Proxy.LoginProxy.NAME).login();
                     break;
             }
         }
@@ -64,11 +73,9 @@ puremvc.define(
          * @static
          * @type {string}
          */
-        NAME:'LogoMediator',
+        NAME:'LoginMediator',
 
-        SHOW:'Logo_SHOW',
-
-        CLOSE:'Logo_Close'
+        SHOW:'Login_SHOW'
     }
 )
 

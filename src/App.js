@@ -10,7 +10,18 @@ var app={
         font:{family:'Arial', xsmall:20, small:24, medium:28, large:32, xlarge:40, xxlarge:60},
     },
     GameData:{
-        storage:sys.localStorage
+        storage:sys.localStorage，
+        server: null,
+        servers:[
+            {name:'双线一服',host:'http://sj108test.96pk.com:9191/'}
+        ]
+    },
+    getServiceURL:function(){
+        if(app.GameData.server&&app.GameData.server.host){
+            return app.GameData.server.host;
+        }
+        else{
+            cc.log("获取当前服务器URL失败！");
+        }
     }
-
 }
