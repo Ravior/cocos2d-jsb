@@ -1,5 +1,5 @@
 /**
- * User: zhoufei
+ * User: Ravior
  */
 puremvc.define(
     //CLASS INFO

@@ -13,7 +13,7 @@ puremvc.define(
         initializeMacroCommand:function(){
             cc.log("InitCommand execute!");
             //加载第一个场景资源文件
-            this.addSubCommand(app.command.LoadLogoImageCommand);
+            this.addSubCommand(app.command.LoadCacheCommand);
         },
 
         /**@Override**/

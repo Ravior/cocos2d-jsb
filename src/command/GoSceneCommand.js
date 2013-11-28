@@ -12,33 +12,17 @@ puremvc.define(
     {
         /** @override */
         execute:function (note) {
-            var list = [];
             var mediator = note.getBody();
-            var data;
-            var descript = "加载资源文件…";
-            var proxy;
-            this.typeName = null;
-            //清空缓存
-            cc.TextureCache.sharedTextureCache().removeUnusedTextures();
-            cc.SpriteFrameCache.sharedTextureCache().clear();
-            cc.AnimationCache.share().clear();
             switch(mediator){
-                //游戏启动Logo页面
-                case app.mediator.scene.LogoMediator:
+                //登陆场景
+                case app.mediator.scene.LoginMediator:
                     break;
             }
-
-            if(list.length > 0){
-//            var handler = ClassUtils.delegate(this, this.onComplete, mediator, data);
-//            //{value:"加载的内容数组", hide:true, callback:回调方法, descript:'描述文字'}
-//            this.sendNotification(app.command.CommandType.LOAD, {value:list, callback:handler, descript:descript});
-            }else{
-                this.onComplete(mediator, data);
-            }
+            this.onComplete(mediator);
         },
-        onComplete:function(mediator, data){
+        onComplete:function(mediator){
             var _prevMediator = this.preMediator;
-            //如果前一个场景为空，即将开启Logo场景
+            //如果前一个场景为空
             if(_prevMediator != null){
                 //清除前一场景内容
                 this.sendNotification(_prevMediator.CLOSE);
@@ -49,7 +33,7 @@ puremvc.define(
             //记录当前场景名称
             this.sceneMediator = mediator;
 
-            this.sendNotification(mediator.SHOW, data);
+            this.sendNotification(mediator.SHOW);
         }
     },
     //static members
